@@ -1,28 +1,7 @@
 import {
   CoverThemeType,
-  //   OnboardingStep,
   SelectOption,
 } from "../interfaces/interfaces";
-
-////// Poster
-export const posterColorThemeOptions: SelectOption[] = [
-  {
-    className: "vibrant",
-    selectValue: "אנרגטי",
-  },
-  {
-    className: "light",
-    selectValue: "בהיר",
-  },
-  {
-    className: "dark",
-    selectValue: "כהה",
-  },
-  {
-    className: "calm",
-    selectValue: "רגוע",
-  },
-];
 
 // Unused code
 export const fontFamilyOptions: SelectOption[] = [
@@ -131,22 +110,6 @@ export const coverThemes: CoverThemeType[] = [
   },
   {
     id: 5,
-    name: "love",
-    backgroundColor: "#000000",
-    font: {
-      family: "karantina",
-      emSize: 7,
-      sliderSize: 60,
-    },
-    textColor: "#FF0000",
-    profileTextColor: "#FF0000",
-    isShowTextBackground: false,
-    sentenceBgColor: "#ffffff",
-    coverText: "IsraeLove",
-    profileText: "Israel",
-  },
-  {
-    id: 6,
     name: "jlm",
     backgroundColor: "#00d1ff",
     font: {
@@ -162,7 +125,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "JLM",
   },
   {
-    id: 7,
+    id: 6,
     name: "freedom",
     backgroundColor: "#ffffff",
     font: {
@@ -178,7 +141,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "Freedom",
   },
   {
-    id: 8,
+    id: 7,
     name: "resist",
     backgroundColor: "#f04539",
     font: {
@@ -194,7 +157,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "RESIST",
   },
   {
-    id: 9,
+    id: 8,
     name: "united",
     backgroundColor: "#2082ff",
     font: {
@@ -210,7 +173,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "אחדות",
   },
   {
-    id: 10,
+    id: 9,
     name: "thankyou",
     backgroundColor: "#b400ff",
     font: {
@@ -226,7 +189,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "תודה",
   },
   {
-    id: 11,
+    id: 10,
     name: "front",
     backgroundColor: "#FF0000",
     font: {
@@ -242,7 +205,7 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "החזית",
   },
   {
-    id: 12,
+    id: 11,
     name: "biden",
     backgroundColor: "#000000",
     font: {
@@ -258,37 +221,37 @@ export const coverThemes: CoverThemeType[] = [
     profileText: "Biden ❤",
   },
   {
-    id: 13,
-    name: "hamas1",
-    backgroundColor: "#000000",
+    id: 12,
+    name: "idf",
+    backgroundColor: "#738869",
     font: {
       family: "noto-serif-hebrew",
       emSize: 4,
       sliderSize: 40,
     },
-    textColor: "#000000",
+    textColor: "#ffffff",
     profileTextColor: "#ffffff",
     isShowTextBackground: true,
-    sentenceBgColor: "#ffffff",
-    coverText: "Hamas = ISIS",
-    profileText: "Enough",
+    sentenceBgColor: "",
+    coverText: "צה״ל ינצח",
+    profileText: "צה״ל",
   },
-  {
-    id: 14,
-    name: "hamas2",
-    backgroundColor: "#000000",
-    font: {
-      family: "noto-serif-hebrew",
-      emSize: 4,
-      sliderSize: 40,
-    },
-    textColor: "#000000",
-    profileTextColor: "#ffffff",
-    isShowTextBackground: true,
-    sentenceBgColor: "#ffffff",
-    coverText: "#HamasIsISIS",
-    profileText: "Enough",
-  },
+  // {
+  //   id: 13,
+  //   name: "hamas2",
+  //   backgroundColor: "#000000",
+  //   font: {
+  //     family: "noto-serif-hebrew",
+  //     emSize: 4,
+  //     sliderSize: 40,
+  //   },
+  //   textColor: "#000000",
+  //   profileTextColor: "#ffffff",
+  //   isShowTextBackground: true,
+  //   sentenceBgColor: "#ffffff",
+  //   coverText: "#HamasIsISIS",
+  //   profileText: "Enough",
+  // },
 ];
 
 
@@ -297,7 +260,6 @@ I Stand with Israel - אני עומד עם ישראל
 לא מאבדת תקווה
 עם ישראל ינצח
 Support Israel
-IsraeLove - Love
 Jews Lives Matter - חיי יהודים חשובים
 Free the hostages - שחררו את השבויים
 Resist Terror - להתנגד לטרור

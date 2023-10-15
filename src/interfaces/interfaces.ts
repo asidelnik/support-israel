@@ -1,17 +1,5 @@
 import { EditMenuParent } from "./enums";
 
-export interface Opinion {
-  key: number;
-  text: string;
-  isActive: boolean;
-}
-
-export interface OpinionsGroup {
-  key: number;
-  title: string;
-  opinions: Opinion[];
-}
-
 export interface FontType {
   family: string;
   emSize: number;
@@ -43,14 +31,6 @@ export interface EditPageDesignType {
 export interface ParentType {
   parent: EditMenuParent;
 }
-
-// export interface OnboardingStep {
-//   number: number;
-//   text: string;
-//   top: string;
-//   right: string;
-//   buttonText: string;
-// }
 
 export interface ImageDialogProps {
   open: boolean;

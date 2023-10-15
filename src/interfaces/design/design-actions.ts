@@ -10,9 +10,6 @@ type SetEditPageDesigns = {
   payload: EditPageDesignType;
 };
 type SetCoverDesigns = { type: "set-cover-designs"; payload: CoverType };
-type SetColorTheme = { type: "set-color-theme"; payload: string };
-type SetPosterFonts = { type: "set-poster-fonts"; payload: FontType };
-
 type SetEditPageBackgroundColor = {
   type: "set-edit-page-background-color";
   payload: string;
@@ -56,8 +53,6 @@ type SetProfileFontSize = {
 export type DesignActions =
   | SetEditPageDesigns
   | SetCoverDesigns
-  | SetColorTheme
-  | SetPosterFonts
   | SetEditPageBackgroundColor
   | SetEditPageFontFamily
   | SetCoverSentenceBgColor

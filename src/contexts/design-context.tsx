@@ -23,16 +23,6 @@ export function DesignProvider({ children }: DesignContextProviderProps) {
 
 function designReducer(design: DesignType, action: DesignActions): any {
   switch (action.type) {
-    ////// Poster
-
-    case "set-color-theme": {
-      return { ...design, posterColorTheme: action.payload } as DesignType;
-    }
-
-    case "set-poster-fonts": {
-      return { ...design, posterFont: action.payload } as DesignType;
-    }
-
     case "set-edit-page-designs": {
       return { ...design, editPage: action.payload } as DesignType;
     }
