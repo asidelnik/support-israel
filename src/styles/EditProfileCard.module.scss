@@ -1,0 +1,152 @@
+@use "variables" as v;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 1.2rem;
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.profilePictureContainer {
+  width: 851px;
+  height: 220px;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+
+  @media screen and (max-width: v.$breakpoint-1250) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: v.$breakpoint-940) {
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: v.$breakpoint-650) {
+    padding: 0;
+    margin-block-end: 0.5rem;
+    justify-content: center;
+  }
+
+  .profilePictureHtmlToCanvas {
+    position: relative;
+    top: -30px;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    font-size: 2em;
+
+    @media screen and (max-width: v.$breakpoint-940) {
+      top: -20px;
+    }
+
+    @media screen and (max-width: v.$breakpoint-650) {
+      top: initial;
+      font-size: 2.8em;
+      width: 300px;
+      height: 300px;
+    }
+
+    .profilePictureDesignContainer {
+      background-color: #f8f8f8;
+      width: 200px;
+      height: 200px;
+
+      @media screen and (max-width: v.$breakpoint-650) {
+        width: 300px;
+        height: 300px;
+      }
+
+      .uploadedImageContainer {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+
+        @media screen and (max-width: v.$breakpoint-650) {
+          width: 300px;
+          height: 300px;
+        }
+
+        .uploadedImage {
+          width: 200px;
+
+          @media screen and (max-width: v.$breakpoint-650) {
+            width: 300px;
+          }
+        }
+
+        .imagePlaceholder {
+          height: calc(100% - 52px);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          .icon {
+            font-size: 5rem;
+            color: rgb(220, 220, 220);
+            margin: 0;
+
+            @media screen and (max-width: v.$breakpoint-650) {
+              font-size: 7rem;
+            }
+          }
+        }
+      }
+
+      .profileTextContainer {
+        position: relative;
+        bottom: 65px;
+        left: 0px;
+        height: 65px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        color: white;
+        font-weight: 900;
+        background-color: #4caf50;
+        overflow: hidden;
+
+        @media screen and (max-width: v.$breakpoint-650) {
+          height: 97.5px;
+          bottom: 97.5px;
+          cursor: pointer;
+        }
+
+        .profileText {
+          position: relative;
+          top: -3px;
+          text-align: center;
+          user-select: none;
+
+          //   @media screen and (max-width: v.$breakpoint-650) {
+          //     font-size: 2.5rem;
+          //   }
+        }
+      }
+    }
+  }
+}
+
+.profileNotSelected {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.profileSelected {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

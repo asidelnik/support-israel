@@ -1,0 +1,86 @@
+@use "variables" as v;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 1.2rem;
+
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.coverPictureContainer {
+  background-color: #f6f6f6;
+
+  @media screen and (max-width: v.$breakpoint-650) {
+    margin-block-end: 0.5rem;
+    cursor: pointer;
+  }
+
+  .coverPictureHtmlToCanvas {
+    .coverPictureDesignContainer {
+      width: 851px;
+      height: 315px;
+      position: relative;
+      padding: 3rem;
+      text-align: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-size: 2rem;
+      font-weight: regular;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: v.$breakpoint-940) {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+        aspect-ratio: 851/315;
+        font-size: 1.5em;
+        padding: 2rem 1rem;
+      }
+
+      @media screen and (max-width: v.$breakpoint-768) {
+        font-size: 1.4em;
+      }
+
+      @media screen and (max-width: v.$breakpoint-650) {
+        font-size: 1.2em;
+      }
+
+      @media screen and (max-width: v.$breakpoint-500) {
+        font-size: 0.8em;
+      }
+
+      .oneSentenceMiddle {
+        padding: 0.1em 0.4em;
+        background-color: white;
+        font-size: 5rem;
+        user-select: none;
+      }
+    }
+  }
+}
+
+.download {
+  @media screen and (max-width: v.$breakpoint-650) {
+    margin-block-end: 5rem;
+  }
+}
+
+.coverNotSelected {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.coverSelected {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

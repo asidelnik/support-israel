@@ -1,0 +1,9 @@
+@use "variables" as v;
+
+.button {
+  background-color: rgb(243, 243, 243);
+
+  .icon {
+    font-size: 4rem;
+  }
+}

@@ -1,0 +1,18 @@
+@use "variables" as v;
+.terms {
+  font-size: 1.3rem;
+  margin: 0;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.button {
+  font-size: 2rem;
+  padding: 6px 16px 6px 24px !important;
+
+  .icon {
+    margin-inline-end: 1.3rem;
+  }
+}

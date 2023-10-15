@@ -1,0 +1,150 @@
+@use "variables" as v;
+.editToggle {
+  display: block;
+  position: absolute;
+  z-index: 6;
+  width: auto;
+  height: fit-content;
+  padding: 6px 6px 0px 0px;
+
+  .button {
+    background-color: rgba(var(--background), 1);
+
+    .icon {
+      font-size: 2.4rem;
+
+      @media screen and (max-width: v.$breakpoint-1160) {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.panelContainer {
+  overflow-y: scroll;
+  min-width: 30rem;
+  padding: 0;
+  padding-block-start: 5px;
+  border-inline-end: 1px solid rgb(218, 220, 224);
+  min-height: 92vh;
+  border-bottom-left-radius: 10px;
+
+  @media screen and (max-width: v.$breakpoint-1250) {
+    position: absolute;
+    top: none;
+    right: 0;
+    z-index: 5;
+    background-color: rgba(var(--background), 1);
+    box-shadow: -5px 0px 10px 2px rgba(0, 0, 0, 0.2),
+      -15px 0px 20px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: v.$breakpoint-650) {
+    overflow-y: initial;
+    position: initial;
+    top: initial;
+    right: initial;
+    z-index: 0;
+    width: 100%;
+    min-width: initial;
+    border: none;
+    box-shadow: none;
+    min-height: initial;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.2), 0 -3px 20px rgba(0,0,0,0.1);
+    flex-grow: 1;
+  }
+
+  .tabs {
+    border-block-end: 1px solid rgb(218, 220, 224);
+    padding-inline-start: 5rem;
+  }
+
+  .stepMenu {
+    padding: 2rem;
+
+    @media screen and (max-width: v.$breakpoint-650) {
+      padding: 2.5rem;
+    }
+
+    .header {
+      @media screen and (max-width: v.$breakpoint-650) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-block-end: 1.5rem;
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-block-start: 0.5rem;
+
+        @media screen and (max-width: v.$breakpoint-650) {
+          margin: 0;
+        }
+      }
+    }
+
+    .elementContainer {
+      padding-block-end: 1.8rem;
+
+      label {
+        display: block;
+        padding-block-end: 0.5rem;
+        font-size: 1.8rem;
+        color: rgb(95, 95, 95);
+      }
+
+      .elementLabel {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding-block-end: 0.5rem;
+        font-size: 1.8rem;
+        color: rgb(95, 95, 95);
+      }
+    }
+
+    .advancedContainer {
+      background-color: rgb(48 48 48 / 4%);
+      padding: 1rem 1.5rem 0 1.5rem;
+
+      .advancedEditElement {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-block-end: 1rem;
+      }
+    }
+  }
+}
+
+.infoIcon {
+  color: rgb(206, 206, 206);
+  font-size: 2.3rem !important;
+  margin-inline-start: 1rem;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.shadow {
+  box-shadow: -3px 3px 10px 2px rgba(0, 0, 0, 0.1),
+    -3px 3px 20px 2px rgba(0, 0, 0, 0.05);
+}
+
+.customToolTip {
+  margin: 0;
+  padding: 0;
+  color: #9d9d9d;
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+}

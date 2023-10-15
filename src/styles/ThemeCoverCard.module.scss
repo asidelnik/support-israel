@@ -1,0 +1,56 @@
+@use "variables" as v;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #f6f6f6;
+  align-items: stretch;
+  cursor: pointer;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  .cover {
+    overflow: hidden;
+    height: 140px;
+    width: auto;
+    aspect-ratio: 851/315;
+    position: relative;
+    padding: 3rem;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 0.9em;
+    font-weight: regular;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: v.$breakpoint-1250) {
+      aspect-ratio: initial;
+    }
+
+    @media screen and (max-width: v.$breakpoint-768) {
+      font-size: 1em;
+    }
+
+    @media screen and (max-width: v.$breakpoint-650) {
+      font-size: 0.8em;
+    }
+
+    @media screen and (max-width: v.$breakpoint-400) {
+      width: 92vw;
+    }
+
+    .sentenceContainer {
+      padding: 0.1em 0.4em;
+    }
+  }
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}

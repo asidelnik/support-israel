@@ -1,0 +1,59 @@
+@use "variables" as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-with-one-start-icon {
+  font-size: 2rem;
+  padding: 6px 16px 6px 24px !important;
+
+  .icon {
+    margin-inline-end: 1.3rem;
+  }
+}
+
+.icon {
+  margin-inline-end: 1.3rem;
+}
+
+.upload-profile-picture {
+  font-size: 2rem !important;
+  padding: 6px 16px 6px 24px !important;
+  color: white !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: row !important;
+
+  .icon {
+    margin-inline-end: 1.3rem;
+  }
+}
+
+.karantina {
+  font-family: "Karantina", cursive;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.noto-serif-hebrew {
+  font-family: "Noto Serif Hebrew", serif;
+  font-weight: 900;
+}
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+}
+.suez-one {
+  font-family: "Suez One", serif;
+  font-weight: 400;
+}
+.david-libre {
+  font-family: "David Libre", serif;
+  font-weight: 700;
+}
+.archivo-narrow {
+  font-family: "Archivo Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: 5px;
+}

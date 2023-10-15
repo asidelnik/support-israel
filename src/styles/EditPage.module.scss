@@ -1,0 +1,56 @@
+@use "variables" as v;
+
+.editPageContainer {
+  min-height: 92vh;
+  padding: 0;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: rgba(var(--background), 1);
+
+  @media screen and (max-width: v.$breakpoint-650) {
+    flex-direction: column-reverse;
+  }
+
+  .picturesViewContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: v.$breakpoint-1250) {
+      padding: 2rem;
+      justify-content: flex-start;
+      min-width: initial;
+    }
+
+    @media screen and (max-width: v.$breakpoint-650) {
+      padding: 2.5rem;
+      padding-block-end: 4rem;
+      justify-content: flex-start;
+      min-width: initial;
+      flex: 0 0 auto;
+    }
+
+    .myProfileContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: v.$breakpoint-940) {
+        width: 100%;
+        align-items: stretch;
+      }
+
+      @media screen and (max-width: v.$breakpoint-768) {
+        width: 100%;
+        align-items: stretch;
+      }
+    }
+  }
+}

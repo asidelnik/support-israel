@@ -1,0 +1,43 @@
+html {
+  font-size: 10px;
+  font-family: 'Arimo', sans-serif;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  color: gray;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  
+  /* Colors */
+  --color-primary: 32, 32, 32;
+  --color-secondary: 255, 255, 0;
+  --color-light-gray: 229, 229, 229;
+  --background: 243, 243, 243;
+  --button-bg: 48, 48, 48;
+}
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

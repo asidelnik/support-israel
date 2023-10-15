@@ -1,0 +1,15 @@
+@use "variables" as v;
+
+.button {
+  background-color: rgb(243, 243, 243);
+
+  .iconLeft {
+    transform: rotate(270deg);
+    font-size: 2.3rem;
+  }
+}
+
+.shadow {
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.05),
+    1px 1px 4px 1px rgba(0, 0, 0, 0.025);
+}

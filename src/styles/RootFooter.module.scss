@@ -1,0 +1,79 @@
+@use "variables" as v;
+
+footer {
+  background-color: rgb(70, 70, 70);
+  color: white;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: v.$breakpoint-650) {
+    column-gap: 2rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 4rem 12rem;
+    flex-wrap: wrap;
+    padding: 4rem 3rem 6rem 3rem;
+
+    @media screen and (max-width: v.$breakpoint-940) {
+      gap: 4rem 9rem;
+    }
+    
+    @media screen and (max-width: v.$breakpoint-768) {
+        gap: 4rem 7rem;
+        justify-content: flex-start;
+        padding: 4rem 4rem 6rem 4rem;
+    }
+
+    @media screen and (max-width: v.$breakpoint-650) {
+      gap: 4rem 3rem;
+    }
+
+    .column {
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .items {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        row-gap: 2rem;
+
+        .link {
+          cursor: pointer;
+          text-decoration: none;
+          color: white;
+        }
+
+        .button {
+          font-size: 1.7rem;
+          padding: 0.5rem 1.6rem;
+
+          @media screen and (max-width: v.$breakpoint-768) {
+            padding: 0.5rem 1.2rem;
+            font-size: 1.5rem;
+          }
+
+          .icon {
+            font-size: 2.5rem;
+            margin-inline-start: 0.8rem;
+
+            @media screen and (max-width: v.$breakpoint-768) {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
