@@ -16,6 +16,7 @@ import {
 import ProfileColorInput from "../../sub-components/ProfileColorInput";
 import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
+import { useDesign } from "../../../contexts/design-context";
 
 export default function ProfileEditPanel() {
   const opinionsDispatch = useOpinionsDispatch();
@@ -23,6 +24,7 @@ export default function ProfileEditPanel() {
   const navDispatch = useNavigationDispatch();
   const nav = useNavigation();
   const isMobile = useMediaQuery("(max-width: 650px)");
+  const design = useDesign();
   const advancedEdtiLabel = { inputProps: { "aria-label": "עריכה מתקדמת" } };
 
   function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
@@ -110,6 +112,7 @@ export default function ProfileEditPanel() {
             onChange={profileTextChangeHandler}
             inputProps={{ maxLength: 14 }}
             fullWidth
+            className={clsx(design.editPage.textDirection)}
           />
         </div>
 

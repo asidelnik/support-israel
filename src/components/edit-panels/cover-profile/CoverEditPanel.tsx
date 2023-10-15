@@ -14,12 +14,15 @@ import {
 } from "../../../contexts/navigation-context";
 import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
+import { useDesign } from "../../../contexts/design-context";
+import clsx from "clsx";
 
 export default function CoverEditPanel() {
   const opinion = useOpinions();
   const opinionsDispatch = useOpinionsDispatch();
   const navDispatch = useNavigationDispatch();
   const nav = useNavigation();
+  const design = useDesign();
   const isMobile = useMediaQuery("(max-width: 650px)");
   const advancedEdtiLabel = { inputProps: { "aria-label": "עריכה מתקדמת" } };
 
@@ -66,6 +69,7 @@ export default function CoverEditPanel() {
             onChange={coverTextChangeHandler}
             inputProps={{ maxLength: 50 }}
             fullWidth
+            className={clsx(design.editPage.textDirection)}
           />
         </div>
 

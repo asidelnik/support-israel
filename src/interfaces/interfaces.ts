@@ -26,6 +26,7 @@ export interface EditPageDesignType {
   sentenceBgColor: string;
   fontFamily: string;
   profilePicture: ProfilePictureDesignType;
+  textDirection: string;
 }
 
 export interface ParentType {
@@ -49,6 +50,7 @@ export interface CoverType {
   font: FontSizeType;
   textColor: string;
   isShowTextBackground: boolean;
+  textDirection: string;
 }
 
 export interface CoverThemeType {
@@ -62,6 +64,7 @@ export interface CoverThemeType {
   coverText: string;
   profileText: string;
   sentenceBgColor: string;
+  textDirection: string;
 }
 
 export interface TabPanelProps {

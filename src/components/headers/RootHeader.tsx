@@ -32,7 +32,7 @@ export default function RootHeader() {
   return (
     <>
       <header
-        className={ pathName === "/edit" ? c.navHeader : c.titleHeader }
+        className={pathName === "/edit" ? c.navHeader : c.titleHeader}
       >
         {pathName === "/edit" ? (
           <div className={c.nav}>
@@ -52,8 +52,14 @@ export default function RootHeader() {
         ) : (
           <div className={c.titleBanner}>
             <div className={c.titleContainer}>
-                <h1 className={c.h1}>✡&nbsp;Stand with Israel&nbsp;✡</h1>
-                <div className={c.slogan}>עיצובי תמיכה בישראל לפייסבוק</div>
+                {isMobile ?
+                  (<h1 className={c.h1}><span className={c.star}>✡</span>STAND<br />WITH<br />ISRAEL</h1>) :
+                  (<h1 className={c.h1}>✡&nbsp;STAND WITH ISRAEL&nbsp;✡</h1>)
+                }
+                {isMobile ?
+                  (<div className={c.slogan}>עיצובי תמיכה בישראל<br />לפייסבוק</div>) :
+                  (<div className={c.slogan}>עיצובי תמיכה בישראל לפייסבוק</div>)
+                }
             </div>
           </div>
         )}

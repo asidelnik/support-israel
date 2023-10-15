@@ -36,10 +36,6 @@
   font-weight: 700;
   letter-spacing: 3px;
 }
-.noto-serif-hebrew {
-  font-family: "Noto Serif Hebrew", serif;
-  font-weight: 900;
-}
 .open-sans {
   font-family: "Open Sans", sans-serif;
   font-weight: 800;
@@ -52,8 +48,20 @@
   font-family: "David Libre", serif;
   font-weight: 700;
 }
-.archivo-narrow {
-  font-family: "Archivo Narrow", sans-serif;
-  font-weight: 700;
-  letter-spacing: 5px;
+.lilita-one {
+  font-family: 'Lilita One', sans-serif;
+  letter-spacing: 1px;
+}
+.gabarito {
+  font-family: 'Gabarito', sans-serif;
+  font-weight: 800;
+}
+
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
 }

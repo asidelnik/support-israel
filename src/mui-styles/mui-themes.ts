@@ -4,37 +4,37 @@ export const bodyTheme = createTheme({
   typography: {
     htmlFontSize: 8,
     button: {
-      fontSize: "2rem",
+      fontSize: '2rem',
     },
   },
   palette: {
     primary: {
-      main: "rgb(48, 48, 48)",
+      main: '#005EB8',
     },
     secondary: {
-      main: "#ffffff",
+      main: '#ffffff',
     },
     error: {
-      main: "#ff0000",
+      main: '#ff0000',
     },
     warning: {
-      main: "#ff9800",
+      main: '#ff9800',
     },
     info: {
-      main: "rgb(48, 48, 48)",
+      main: 'rgb(48, 48, 48)',
     },
     success: {
-      main: "#4caf50",
+      main: '#4caf50',
     },
   },
   components: {
     MuiAlert: {
       styleOverrides: {
         root: {
-          width: "2em",
-          fontSize: "2em",
-          alignItems: "center",
-          direction: "ltr",
+          width: '2em',
+          fontSize: '2em',
+          alignItems: 'center',
+          direction: 'ltr',
         },
       },
     },

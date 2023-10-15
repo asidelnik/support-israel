@@ -18,7 +18,7 @@ export default function EditCoverCard() {
   const isMobile = useMediaQuery("(max-width: 650px)");
 
   const coverSentenceClasses =
-    c.oneSentenceMiddle + " " + design.editPage.fontFamily;
+    c.oneSentenceMiddle + " " + design.editPage.fontFamily + " " + design.editPage.textDirection;
 
   function setIsShowEditPanel() {
     navDispatch({

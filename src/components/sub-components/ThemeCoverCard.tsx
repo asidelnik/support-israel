@@ -21,9 +21,10 @@ export default function ThemeCoverCard({ theme }: CoverCardProps) {
     coverText,
     profileText,
     sentenceBgColor,
+    textDirection,
   } = theme;
 
-  const sentenceContainer = c.sentenceContainer + " " + font.family;
+  const sentenceContainer = c.sentenceContainer + " " + font.family + " " + textDirection;
 
   function selectTheme() {
     if (theme !== undefined) {
@@ -49,6 +50,7 @@ export default function ThemeCoverCard({ theme }: CoverCardProps) {
             ...design.editPage.profilePicture,
             textColor: profileTextColor,
           },
+          textDirection: textDirection,
         },
       });
 
@@ -60,6 +62,7 @@ export default function ThemeCoverCard({ theme }: CoverCardProps) {
           textColor: textColor,
           isShowTextBackground: isShowTextBackground,
           profileTextColor: profileTextColor,
+          textDirection: textDirection,
         },
       });
     }

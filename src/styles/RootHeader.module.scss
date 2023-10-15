@@ -1,33 +1,4 @@
-@use "variables" as v;
-
-.desktopOnlyBanner {
-  display: none;
-
-  @media screen and (max-width: v.$breakpoint-940) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgba(255, 255, 0, 0.2);
-    color: rgba(var(--button-bg), 1);
-    font-size: 1.8rem;
-  }
-
-  .iconContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    .monitorIcon {
-      font-size: 1.8rem;
-      padding: 0;
-      margin: 0;
-      margin-inline-start: 1rem;
-    }
-  }
-}
+@use 'variables' as v;
 
 .navHeader {
   display: flex;
@@ -45,7 +16,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 2rem 3rem;
-    background-color: rgb(32 32 32);
+    background-color: #005eb8;
 
     @media screen and (max-width: v.$breakpoint-650) {
       padding: 2rem 2rem;
@@ -86,21 +57,26 @@
     align-items: center;
     font-weight: bold;
     box-sizing: border-box;
-    background-color: rgba(var(--color-primary), 1);
+    background-color: #005eb8;
     font-size: 1rem;
+
+    @media screen and (max-width: v.$breakpoint-768) {
+      font-size: 0.8rem;
+    }
 
     @media screen and (max-width: v.$breakpoint-650) {
       height: 50vh;
       font-size: 0.6rem;
+      text-align: center;
     }
 
-    @media screen and (max-width: v.$breakpoint-400) {
-      font-size: 0.55rem;
-    }
+    // @media screen and (max-width: v.$breakpoint-400) {
+    //   font-size: 0.6rem;
+    // }
 
-    @media screen and (max-width: 350px) {
-      font-size: 0.5rem;
-    }
+    // @media screen and (max-width: 350px) {
+    //   font-size: 0.5rem;
+    // }
 
     .titleContainer {
       display: flex;
@@ -109,28 +85,54 @@
       align-items: flex-start;
       row-gap: 0.4rem;
 
+      @media screen and (max-width: v.$breakpoint-650) {
+        align-items: center;
+      }
+
       .h1 {
-        color: rgba(var(--button-bg), 1);
+        color: #005eb8;
         font-weight: bold;
-        font-family: "Open Sans", sans-serif;
+        font-family: 'Open Sans', sans-serif;
         font-weight: 800;
         font-size: 5em;
         padding: 0.7rem 2.5rem;
 
-        background-color: rgba(var(--color-secondary), 1);
+        background-color: white;
         border-radius: 2px;
         margin: 0.5rem;
 
         opacity: 0;
-        transform: skew(6deg) translateX(6%);
+        transform: skew(6deg) translateX(-6%);
         animation: slideIn 0.5s forwards;
+
+        @media screen and (max-width: v.$breakpoint-650) {
+          color: white;
+          opacity: 1;
+          font-size: 7em;
+          background-color: #005eb8;
+          animation: none;
+          transform: none;
+          margin-block-start: 0;
+          padding-block-start: 0;
+          line-height: 115%;
+        }
+
+        .star {
+          display: block;
+          padding-block: 10px;
+        }
       }
 
       .slogan {
         font-size: 2.8em;
-        color: #dcdcdc;
+        color: hsl(0, 0%, 92%);
         width: 100%;
         text-align: center;
+
+        @media screen and (max-width: v.$breakpoint-650) {
+          font-size: 4em;
+          color: hsl(0, 0%, 88%);
+        }
       }
     }
   }

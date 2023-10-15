@@ -21,33 +21,35 @@ export const navigationInitialState: NavigationType = {
 
 export const designInitialState: DesignType = {
   editPage: {
-    backgroundColor: "#005EB8",
-    sentenceBgColor: "white",
+    backgroundColor: '#005EB8',
+    sentenceBgColor: 'white',
     fontFamily:
       fontFamilyOptions.length > 0
         ? fontFamilyOptions[0].className
-        : "open-sans",
+        : 'open-sans',
 
     profilePicture: {
       font: {
         emSize: 1.6,
         sliderSize: 16,
       },
-      textColor: "white",
+      textColor: 'white',
     },
+    textDirection: 'ltr',
   },
   cover: {
     font: {
-      emSize: 3.5,
+      emSize: 3,
       sliderSize: 35,
     },
-    textColor: "#005EB8",
+    textColor: '#005EB8',
     isShowTextBackground: true,
+    textDirection: 'ltr',
   },
 };
 
 export const opinionsInitialState: OpinionsType = {
-  uploadedProfileImageUrl: "",
-  coverOpinion: "✡&nbsp;Stand with Israel&nbsp;✡",
-  profileOpinion: "✡&nbsp;תקווה",
+  uploadedProfileImageUrl: '',
+  coverOpinion: '✡ Stand with Israel ✡',
+  profileOpinion: 'Israel',
 };

@@ -104,7 +104,7 @@ export default function EditProfileCard() {
               }}
               onClick={() => (isMobile ? setIsShowEditPanel() : null)}
             >
-              <div className={c.profileText}>{opinions.profileOpinion}</div>
+              <div className={c.profileText + " " + design.cover.textDirection}>{opinions.profileOpinion}</div>
             </div>
           </div>
         </div>
