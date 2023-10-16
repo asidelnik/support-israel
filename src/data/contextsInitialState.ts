@@ -39,7 +39,7 @@ export const designInitialState: DesignType = {
   },
   cover: {
     font: {
-      emSize: 3,
+      emSize: 2.8,
       sliderSize: 35,
     },
     textColor: '#005EB8',

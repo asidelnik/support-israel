@@ -26,9 +26,6 @@ function opinionsReducer(opinions: OpinionsType, action: OpinionsActions): any {
     // case "reset": {
     //   return opinionsInitialState;
     // }
-    case "upload-excel-opinion-groups": {
-      return { ...opinions, opinionGroups: action.payload } as OpinionsType;
-    }
     case "upload-profile-image": {
       return {
         ...opinions,
