@@ -1,6 +1,6 @@
 # Support Israel
 A website to create Facebook images that support Israel<br>
-[Website link](https://asidelnik.github.io/theme-toggling--css-variables/)
+[Website link](https://asidelnik.github.io/support-israel)
 
 **Choose a theme**
 <img width="1343" alt="image" src="https://github.com/asidelnik/support-israel/assets/10272524/b51cb322-0157-417d-8066-ed1b2e4fbee6">
