@@ -1,5 +1,5 @@
 # Support Israel
-A website to create Facebook images that support Israel
+A website to create Facebook images that support Israel<br>
 [Website link](https://asidelnik.github.io/theme-toggling--css-variables/)
 
 **Choose a theme**
