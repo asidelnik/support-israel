@@ -1,17 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { uglify } from "rollup-plugin-uglify";
-// import { resolve } from "path";
+import { uglify } from 'rollup-plugin-uglify';
 
 export default defineConfig({
-  base: "/israel/",
+  base: '/support-israel/',
   plugins: [react()],
-  //   resolve: {
-  //     alias: {
-  //       "~": resolve(__dirname, "src"),
-  //     },
-  //   },
-  assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg"],
+  assetsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg'],
   build: {
     rollupOptions: {
       plugins: [
@@ -22,16 +16,3 @@ export default defineConfig({
     },
   },
 });
-
-//   css: {
-//     modules: {
-//       localsConvention: "camelCaseOnly",
-//     },
-//   },
-
-// postcss({
-//   modules: {
-//     generateScopedName: "[hash:base64:8]",
-//   },
-//   autoModules: false,
-// }),

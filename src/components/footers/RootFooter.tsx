@@ -16,7 +16,7 @@ export default function RootFooter() {
   const nav = useNavigation();
   const navDispatch = useNavigationDispatch();
   const isMobile = useMediaQuery("(max-width: 650px)");
-  const websiteUrl = "https://asidelnik.github.io/israel/";
+  const websiteUrl = "https://asidelnik.github.io/support-israel/";
 
   function closeTermsOfService() {
     navDispatch({ type: "set-is-show-terms-of-service", payload: false });
