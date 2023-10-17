@@ -19,8 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "sass": "^1.63.6",
-    "xlsx": "^0.18.5"
+    "sass": "^1.63.6"
   },
   "devDependencies": {
     "@types/node": "^20.4.1",
