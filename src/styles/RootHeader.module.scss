@@ -65,7 +65,6 @@
     }
 
     @media screen and (max-width: v.$breakpoint-650) {
-      height: 50vh;
       font-size: 0.6rem;
       text-align: center;
     }
@@ -108,7 +107,7 @@
         @media screen and (max-width: v.$breakpoint-650) {
           color: white;
           opacity: 1;
-          font-size: 7em;
+          font-size: 8em;
           background-color: #005eb8;
           animation: none;
           transform: none;
@@ -130,8 +129,8 @@
         text-align: center;
 
         @media screen and (max-width: v.$breakpoint-650) {
-          font-size: 4em;
-          color: hsl(0, 0%, 88%);
+          font-size: 3.5em;
+          color: hsl(0, 0%, 92%);
         }
       }
     }

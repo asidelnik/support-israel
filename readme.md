@@ -1,2 +1,2 @@
-# Stand with Israel
-A website for creating cover & profile pictures to support Israel on Facebook.
+# Support Israel
+A website to create Facebook images that support Israel
