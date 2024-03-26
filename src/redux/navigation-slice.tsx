@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { navigationInitialState } from "../data/contextsInitialState";
 import { NavigationType } from "../interfaces/navigation/navigation-context-types";
-import { CoverProfileBools } from "../interfaces/interfaces";
 
 const navigationSlice = createSlice({
   name: 'navigation',
@@ -28,8 +27,11 @@ const navigationSlice = createSlice({
     setIsShowEditPanelWeb: (state: NavigationType, action: PayloadAction<boolean>) => {
       state.isShowEditPanel.web = action.payload;
     },
-    setIsShowAdvancedEdit: (state: NavigationType, action: PayloadAction<CoverProfileBools>) => {
-      state.isShowAdvancedEdit = action.payload;
+    setIsShowAdvancedEditCover: (state: NavigationType, action: PayloadAction<boolean>) => {
+      state.isShowAdvancedEdit.cover = action.payload;
+    },
+    setIsShowAdvancedEditProfile: (state: NavigationType, action: PayloadAction<boolean>) => {
+      state.isShowAdvancedEdit.profile = action.payload;
     },
   }
 })
@@ -41,7 +43,8 @@ export const {
   setEditPanelActiveTab,
   setIsShowEditPanelMobile,
   setIsShowEditPanelWeb,
-  setIsShowAdvancedEdit
+  setIsShowAdvancedEditCover,
+  setIsShowAdvancedEditProfile
 } = navigationSlice.actions;
 export default navigationSlice.reducer;
 
