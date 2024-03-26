@@ -1,21 +1,16 @@
 import { IconButton } from "@mui/material";
 import c from "../../styles/HideDownButton.module.scss";
 import clsx from "clsx";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setIsShowEditPanelMobile } from "../../redux/navigation-slice";
 export default function HideDownButton() {
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { isShowEditPanel } = useSelector((state: RootState) => state.navigation);;
+  const dispatch = useDispatch();
 
   function setIsShowEditPanel() {
-    navDispatch({
-      type: "set-is-show-edit-panel-mobile",
-      payload: !nav.isShowEditPanel.mobile,
-    });
+    dispatch(setIsShowEditPanelMobile(!isShowEditPanel.mobile));
   }
 
   return (

@@ -1,36 +1,25 @@
 import c from "../../styles/EditCoverCard.module.scss";
 import { useDesign } from "../../contexts/design-context";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
 import { useMediaQuery } from "@mui/material";
 import EditButton from "../sub-components/EditButton";
 import DownloadButton from "../sub-components/DownloadButton";
 import { EditMenuParent } from "../../interfaces/enums";
 import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditPanelActiveTab, setIsShowEditPanelMobile } from "../../redux/navigation-slice";
 
 export default function EditCoverCard() {
   const design = useDesign();
   const coverOpinion = useSelector((state: RootState) => state.opinions.coverOpinion);
-  const nav = useNavigation();
-  const navDispatch = useNavigationDispatch();
+  const { isShowEditPanel, editPanelActiveTab } = useSelector((state: RootState) => state.navigation);;
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("(max-width: 650px)");
-
   const coverSentenceClasses =
     c.oneSentenceMiddle + " " + design.editPage.fontFamily + " " + design.editPage.textDirection;
 
   function setIsShowEditPanel() {
-    navDispatch({
-      type: "set-edit-panel-active-tab",
-      payload: 0,
-    });
-
-    navDispatch({
-      type: "set-is-show-edit-panel-mobile",
-      payload: !nav.isShowEditPanel.mobile,
-    });
+    dispatch(setEditPanelActiveTab(0));
+    dispatch(setIsShowEditPanelMobile(!isShowEditPanel.mobile));
   }
 
   return (
@@ -44,7 +33,7 @@ export default function EditCoverCard() {
 
       <section
         className={
-          !isMobile && nav.editPanelActiveTab === 0
+          !isMobile && editPanelActiveTab === 0
             ? c.coverPictureContainer + " " + c.coverSelected
             : c.coverPictureContainer + " " + c.coverNotSelected
         }
@@ -65,15 +54,15 @@ export default function EditCoverCard() {
               style={
                 design.cover.isShowTextBackground
                   ? {
-                      color: design.cover.textColor,
-                      fontSize: design.cover.font.emSize + "em",
-                      backgroundColor: design.editPage.sentenceBgColor,
-                    }
+                    color: design.cover.textColor,
+                    fontSize: design.cover.font.emSize + "em",
+                    backgroundColor: design.editPage.sentenceBgColor,
+                  }
                   : {
-                      color: design.cover.textColor,
-                      fontSize: design.cover.font.emSize + "em",
-                      backgroundColor: design.editPage.backgroundColor,
-                    }
+                    color: design.cover.textColor,
+                    fontSize: design.cover.font.emSize + "em",
+                    backgroundColor: design.editPage.backgroundColor,
+                  }
               }
             >
               {coverOpinion}
@@ -82,7 +71,7 @@ export default function EditCoverCard() {
         </div>
       </section>
 
-      {isMobile && !nav.isShowEditPanel.mobile && (
+      {isMobile && !isShowEditPanel.mobile && (
         <div className={c.download}>
           <DownloadButton parent={EditMenuParent.Cover} />
         </div>

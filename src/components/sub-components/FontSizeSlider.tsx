@@ -2,16 +2,15 @@ import Slider from "@mui/material/Slider";
 import { useDesign, useDesignDispatch } from "../../contexts/design-context";
 import { ParentType } from "../../interfaces/interfaces";
 import { EditMenuParent } from "../../interfaces/enums";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setAFieldTouched } from "../../redux/navigation-slice";
 
 export default function FontSizeSlider({ parent }: ParentType) {
   const designDispatch = useDesignDispatch();
   const design = useDesign();
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { aFieldTouched } = useSelector((state: RootState) => state.navigation);;
+  const dispatch = useDispatch();
   const isCover = parent === EditMenuParent.Cover;
 
   const handleChange = (_event: Event, fontSize: number | number[]) => {
@@ -36,8 +35,8 @@ export default function FontSizeSlider({ parent }: ParentType) {
       }
     }
 
-    if (!nav.aFieldTouched) {
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
     }
   };
 

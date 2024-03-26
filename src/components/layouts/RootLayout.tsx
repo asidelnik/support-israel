@@ -1,7 +1,6 @@
 import "../../styles/App.scss";
 import { Outlet } from "react-router-dom";
 import RootHeader from "../headers/RootHeader";
-import { NavigationProvider } from "../../contexts/navigation-context";
 import { DesignProvider } from "../../contexts/design-context";
 import { ThemeProvider } from "@emotion/react";
 import { headerTheme, bodyTheme } from "../../mui-styles/mui-themes";
@@ -12,7 +11,6 @@ import store from '../../redux/store';
 export default function RootLayout() {
   return (
     <>
-      <NavigationProvider>
         <DesignProvider>
           <Provider store={store}>
             <ThemeProvider theme={bodyTheme}>
@@ -25,8 +23,7 @@ export default function RootLayout() {
               <RootFooter />
             </ThemeProvider>
           </Provider>
-        </DesignProvider>
-      </NavigationProvider>
+      </DesignProvider>
     </>
   );
 }

@@ -4,10 +4,6 @@ import clsx from "clsx";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import FontSizeSlider from "../../sub-components/FontSizeSlider";
 import { EditMenuParent } from "../../../interfaces/enums";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../../contexts/navigation-context";
 import ProfileColorInput from "../../sub-components/ProfileColorInput";
 import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
@@ -15,13 +11,12 @@ import { useDesign } from "../../../contexts/design-context";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfileOpinion, uploadProfileImage } from '../../../redux/opinions-slice';
 import { RootState } from "../../../redux/store";
+import { setAFieldTouched, setIsShowAdvancedEditProfile } from "../../../redux/navigation-slice";
 
 export default function ProfileEditPanel() {
   const dispatch = useDispatch();
   const profileOpinion = useSelector((state: RootState) => state.opinions.profileOpinion);
-
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { aFieldTouched, isShowAdvancedEdit } = useSelector((state: RootState) => state.navigation);;
   const isMobile = useMediaQuery("(max-width: 650px)");
   const design = useDesign();
   const advancedEdtiLabel = { inputProps: { "aria-label": "עריכה מתקדמת" } };
@@ -36,8 +31,9 @@ export default function ProfileEditPanel() {
     };
     reader.readAsDataURL(file as Blob);
 
-    if (!nav.aFieldTouched)
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
+    }
   }
 
   function profileTextChangeHandler(
@@ -46,23 +42,17 @@ export default function ProfileEditPanel() {
     const profileOpinion = event.target?.value as string;
     dispatch(updateProfileOpinion(profileOpinion));
 
-    if (!nav.aFieldTouched)
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched)
+      dispatch(setAFieldTouched(true));
   }
 
   function updateAdvanced(event: React.ChangeEvent<HTMLInputElement>) {
     if (typeof event.target.checked == "boolean") {
-      navDispatch({
-        type: "set-is-show-advanced-edit",
-        payload: {
-          ...nav.isShowAdvancedEdit,
-          profile: event.target.checked,
-        },
-      });
+      dispatch(setIsShowAdvancedEditProfile(event.target.checked));
     }
 
-    if (!nav.aFieldTouched) {
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
     }
   }
 
@@ -116,12 +106,12 @@ export default function ProfileEditPanel() {
             <label className={c.elementLabel}>עריכה מתקדמת</label>
             <Switch
               {...advancedEdtiLabel}
-              checked={nav.isShowAdvancedEdit.profile}
+              checked={isShowAdvancedEdit.profile}
               onChange={updateAdvanced}
             />
           </div>
 
-          {nav.isShowAdvancedEdit.profile && (
+          {isShowAdvancedEdit.profile && (
             <>
               <div
                 className={c.elementContainer}

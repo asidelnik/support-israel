@@ -8,7 +8,7 @@
 
 export default function Onboarding() {
   //   const [activeStep, setActiveStep] = useState(0);
-  //   const navDispatch = useNavigationDispatch();
+  //   
 
   //   function handleNextStep(event: any) {
   //     event.stopPropagation();

@@ -2,7 +2,7 @@ import { Link } from "@mui/material";
 import { useNavigationDispatch } from "../../contexts/navigation-context";
 
 export default function SiteMission() {
-  const navDispatch = useNavigationDispatch();
+
   return (
     <>
       <h2>מטרת האתר</h2>

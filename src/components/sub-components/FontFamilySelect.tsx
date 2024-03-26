@@ -4,16 +4,15 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useDesign, useDesignDispatch } from "../../contexts/design-context";
 import { fontFamilyOptions } from "../../data/initialState";
 import { SelectOption } from "../../interfaces/interfaces";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setAFieldTouched } from "../../redux/navigation-slice";
 
 export default function FontFamilySelect() {
   const designDispatch = useDesignDispatch();
   const design = useDesign();
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { aFieldTouched } = useSelector((state: RootState) => state.navigation);;
+  const dispatch = useDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
     if (event.target.value !== null) {
@@ -23,8 +22,8 @@ export default function FontFamilySelect() {
       });
     }
 
-    if (!nav.aFieldTouched)
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched)
+      dispatch(setAFieldTouched(true));
   };
 
   return (

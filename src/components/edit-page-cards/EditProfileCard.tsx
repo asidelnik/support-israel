@@ -1,10 +1,6 @@
 import c from "../../styles/EditProfileCard.module.scss";
 import { Button, useMediaQuery } from "@mui/material";
 import { useDesign } from "../../contexts/design-context";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { EditMenuParent } from "../../interfaces/enums";
 import EditButton from "../sub-components/EditButton";
@@ -12,12 +8,12 @@ import DownloadButton from "../sub-components/DownloadButton";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { uploadProfileImage } from "../../redux/opinions-slice";
+import { setAFieldTouched, setEditPanelActiveTab, setIsShowEditPanelMobile } from "../../redux/navigation-slice";
 
 export default function EditProfileCard() {
   const dispatch = useDispatch();
   const { uploadedProfileImageUrl, profileOpinion } = useSelector((state: RootState) => state.opinions);
-  const nav = useNavigation();
-  const navDispatch = useNavigationDispatch();
+  const { aFieldTouched, isShowEditPanel, editPanelActiveTab } = useSelector((state: RootState) => state.navigation);;
   const design = useDesign();
   const isMobile = useMediaQuery("(max-width: 650px)");
   const profileTextContainerClasses =
@@ -33,20 +29,13 @@ export default function EditProfileCard() {
     };
     reader.readAsDataURL(file as Blob);
 
-    if (!nav.aFieldTouched)
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched)
+      dispatch(setAFieldTouched(true));
   }
 
   function setIsShowEditPanel() {
-    navDispatch({
-      type: "set-edit-panel-active-tab",
-      payload: 1,
-    });
-
-    navDispatch({
-      type: "set-is-show-edit-panel-mobile",
-      payload: !nav.isShowEditPanel.mobile,
-    });
+    dispatch(setEditPanelActiveTab(1));
+    dispatch(setIsShowEditPanelMobile(!isShowEditPanel.mobile));
   }
 
   return (
@@ -62,7 +51,7 @@ export default function EditProfileCard() {
         <div
           id="profilePictureHtmlToCanvas"
           className={
-            !isMobile && nav.editPanelActiveTab === 1
+            !isMobile && editPanelActiveTab === 1
               ? c.profilePictureHtmlToCanvas + " " + c.profileSelected
               : c.profilePictureHtmlToCanvas + " " + c.profileNotSelected
           }
@@ -107,7 +96,7 @@ export default function EditProfileCard() {
         </div>
       </section>
 
-      {isMobile && !nav.isShowEditPanel.mobile && (
+      {isMobile && !isShowEditPanel.mobile && (
         <div>
           <DownloadButton parent={EditMenuParent.Profile} />
         </div>

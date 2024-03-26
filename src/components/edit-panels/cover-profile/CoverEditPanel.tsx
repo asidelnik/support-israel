@@ -4,10 +4,6 @@ import CoverColorInput from "../../sub-components/CoverColorInput";
 import FontSizeSlider from "../../sub-components/FontSizeSlider";
 import FontFamilySelect from "../../sub-components/FontFamilySelect";
 import { EditMenuParent } from "../../../interfaces/enums";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../../contexts/navigation-context";
 import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
 import { useDesign } from "../../../contexts/design-context";
@@ -15,12 +11,12 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCoverOpinion } from "../../../redux/opinions-slice";
 import { RootState } from "../../../redux/store";
+import { setAFieldTouched, setIsShowAdvancedEditCover } from "../../../redux/navigation-slice";
 
 export default function CoverEditPanel() {
   const dispatch = useDispatch();
   const coverOpinion = useSelector((state: RootState) => state.opinions.coverOpinion);
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { isShowAdvancedEdit, aFieldTouched } = useSelector((state: RootState) => state.navigation);;
   const design = useDesign();
   const isMobile = useMediaQuery("(max-width: 650px)");
   const advancedEdtiLabel = { inputProps: { "aria-label": "עריכה מתקדמת" } };
@@ -29,24 +25,18 @@ export default function CoverEditPanel() {
     const coverOpinion = event.target?.value as string;
     dispatch(updateCoverOpinion(coverOpinion));
 
-    if (!nav.aFieldTouched) {
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
     }
   }
 
   function updateAdvanced(event: React.ChangeEvent<HTMLInputElement>) {
     if (typeof event.target.checked == "boolean") {
-      navDispatch({
-        type: "set-is-show-advanced-edit",
-        payload: {
-          ...nav.isShowAdvancedEdit,
-          cover: event.target.checked,
-        },
-      });
+      dispatch(setIsShowAdvancedEditCover(event.target.checked));
     }
 
-    if (!nav.aFieldTouched) {
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
     }
   }
 
@@ -76,12 +66,12 @@ export default function CoverEditPanel() {
             <label className={c.elementLabel}>עריכה מתקדמת</label>
             <Switch
               {...advancedEdtiLabel}
-              checked={nav.isShowAdvancedEdit.cover}
+              checked={isShowAdvancedEdit.cover}
               onChange={updateAdvanced}
             />
           </div>
 
-          {nav.isShowAdvancedEdit.cover && (
+          {isShowAdvancedEdit.cover && (
             <>
               <div
                 className={c.elementContainer}

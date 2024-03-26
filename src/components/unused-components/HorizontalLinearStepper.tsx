@@ -5,7 +5,7 @@
 
 // const createCoverStepperSteps = ["הזנת דעות", "עיצוב והורדה"];
 const HorizontalLinearStepper = () => {
-  //   const nav = useNavigation();
+  //   const nav = useSelector((state: RootState) => state.navigation);;
 
   return (
     <>

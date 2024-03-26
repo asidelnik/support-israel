@@ -8,7 +8,7 @@ import { useNavigationDispatch } from "../../contexts/navigation-context";
 export default function RootHeader() {
   const location = useLocation();
   const pathName = location.pathname;
-  const navDispatch = useNavigationDispatch();
+
   const isMobile = useMediaQuery("(max-width: 650px)");
 
   //   function mainNavTabClicked() {

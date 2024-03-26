@@ -3,27 +3,26 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Button, useMediaQuery } from "@mui/material";
 import TextDialog from "../sub-components/TextDialog";
 import TermsOfService from "../dialog-components/TermsOfService";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
 import SiteMission from "../dialog-components/SiteMission";
 import clsx from "clsx";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setIsShowSiteMission, setIsShowTermsOfService, setIsShowEditPanelWeb } from "../../redux/navigation-slice";
 
 export default function RootFooter() {
-  const nav = useNavigation();
-  const navDispatch = useNavigationDispatch();
+  const { isShowTermsOfService, isShowSiteMission, isShowEditPanel } = useSelector((state: RootState) => state.navigation);;
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("(max-width: 650px)");
   const websiteUrl = "https://asidelnik.github.io/support-israel/";
 
   function closeTermsOfService() {
-    navDispatch({ type: "set-is-show-terms-of-service", payload: false });
+    dispatch(setIsShowTermsOfService(false));
   }
 
   function closeSitePurpose() {
-    navDispatch({ type: "set-is-show-site-mission", payload: false });
+    dispatch(setIsShowSiteMission(false));
   }
 
   function handleShare() {
@@ -33,32 +32,25 @@ export default function RootFooter() {
     window.open(shareUrl, "_blank");
   }
 
-  function setIsShowEditPanelWeb() {
-    navDispatch({
-      type: "set-is-show-edit-panel-web",
-      payload: true,
-    });
-  }
-
   return (
     <>
-      {nav.isShowTermsOfService && (
+      {isShowTermsOfService && (
         <TextDialog
-          open={nav.isShowTermsOfService}
+          open={isShowTermsOfService}
           onClose={closeTermsOfService}
           child={<TermsOfService />}
         />
       )}
 
-      {nav.isShowSiteMission && (
+      {isShowSiteMission && (
         <TextDialog
-          open={nav.isShowSiteMission}
+          open={isShowSiteMission}
           onClose={closeSitePurpose}
           child={<SiteMission />}
         />
       )}
 
-      {((isMobile && !nav.isShowEditPanel.mobile) || !isMobile) && (
+      {((isMobile && !isShowEditPanel.mobile) || !isMobile) && (
         <footer>
           <div className={c.container}>
             <div className={c.column}>
@@ -70,7 +62,7 @@ export default function RootFooter() {
                   className={clsx(c.button)}
                 >
                   <Link
-                    onClick={setIsShowEditPanelWeb}
+                    onClick={() => dispatch(setIsShowEditPanelWeb(true))}
                     to="/theme"
                     className={c.link}
                   >
@@ -101,12 +93,7 @@ export default function RootFooter() {
                     variant="outlined"
                     color="secondary"
                     className={clsx(c.button)}
-                    onClick={() =>
-                      navDispatch({
-                        type: "set-is-show-terms-of-service",
-                        payload: true,
-                      })
-                    }
+                    onClick={() => dispatch(setIsShowTermsOfService(true))}
                   >
                     <span>תנאי השימוש</span>
                   </Button>
@@ -117,12 +104,7 @@ export default function RootFooter() {
                     variant="outlined"
                     color="secondary"
                     className={clsx(c.button)}
-                    onClick={() =>
-                      navDispatch({
-                        type: "set-is-show-site-mission",
-                        payload: true,
-                      })
-                    }
+                    onClick={() => dispatch(setIsShowSiteMission(true))}
                   >
                     <span>מטרת האתר</span>
                   </Button>

@@ -5,13 +5,12 @@ import {
   downloadProfilePicture,
 } from "../../functions/download-functions";
 import DownloadIcon from "@mui/icons-material/Download";
-import {
-  useNavigation,
-  useNavigationDispatch,
-} from "../../contexts/navigation-context";
 import { Button, Checkbox, Link } from "@mui/material";
 import clsx from "clsx";
 import { EditMenuParent } from "../../interfaces/enums";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { setAFieldTouched, setEditPanelActiveTab, setIsShowTermsOfService } from "../../redux/navigation-slice";
 
 type DownloadButtonProps = {
   parent: EditMenuParent;
@@ -19,13 +18,13 @@ type DownloadButtonProps = {
 
 export default function DownloadButton({ parent }: DownloadButtonProps) {
   const [isTermsApproved, setIsTermsApproved] = useState(false);
-  const navDispatch = useNavigationDispatch();
-  const nav = useNavigation();
+  const { aFieldTouched } = useSelector((state: RootState) => state.navigation);
+  const dispatch = useDispatch();
   const termsLabel = { inputProps: { "aria-label": "הסכמה לתנאי השימוש" } };
 
   function downloadHandler() {
-    if (!nav.aFieldTouched) {
-      navDispatch({ type: "set-a-field-touched", payload: true });
+    if (!aFieldTouched) {
+      dispatch(setAFieldTouched(true));
     }
 
     if (parent === EditMenuParent.Profile) {
@@ -36,10 +35,7 @@ export default function DownloadButton({ parent }: DownloadButtonProps) {
   }
 
   function updateTerms(event: React.ChangeEvent<HTMLInputElement>) {
-    navDispatch({
-      type: "set-edit-panel-active-tab",
-      payload: parent === EditMenuParent.Cover ? 0 : 1,
-    });
+    dispatch(setEditPanelActiveTab(parent === EditMenuParent.Cover ? 0 : 1));
 
     if (event.target.checked !== isTermsApproved) {
       setIsTermsApproved(event.target.checked);
@@ -55,14 +51,7 @@ export default function DownloadButton({ parent }: DownloadButtonProps) {
         />
         <span>אני מסכים&nbsp;</span>
         <span>
-          <Link
-            onClick={() =>
-              navDispatch({
-                type: "set-is-show-terms-of-service",
-                payload: true,
-              })
-            }
-          >
+          <Link onClick={() => dispatch(setIsShowTermsOfService(true))}>
             לתנאי השימוש
           </Link>
         </span>
