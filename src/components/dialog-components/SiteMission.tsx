@@ -1,7 +1,9 @@
 import { Link } from "@mui/material";
-import { useNavigationDispatch } from "../../contexts/navigation-context";
+import { useDispatch } from "react-redux";
+import { setIsShowTermsOfService } from "../../redux/navigation-slice";
 
 export default function SiteMission() {
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -12,12 +14,7 @@ export default function SiteMission() {
           <span>בבקשה השתמשו באתר על פי</span>&nbsp;
           <span>
             <Link
-              onClick={() =>
-                navDispatch({
-                  type: "set-is-show-terms-of-service",
-                  payload: true,
-                })
-              }
+              onClick={() => dispatch(setIsShowTermsOfService(true))}
               style={{ cursor: "pointer" }}
             >
               תנאי השימוש

@@ -3,12 +3,13 @@ import { Tooltip, useMediaQuery } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import clsx from "clsx";
-import { useNavigationDispatch } from "../../contexts/navigation-context";
+import { useDispatch } from "react-redux";
+import { setIsShowEditPanelMobile, setIsShowEditPanelWeb } from "../../redux/navigation-slice";
 
 export default function RootHeader() {
   const location = useLocation();
   const pathName = location.pathname;
-
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("(max-width: 650px)");
 
   //   function mainNavTabClicked() {
@@ -17,15 +18,9 @@ export default function RootHeader() {
 
   function setIsShowEditPanel() {
     if (isMobile) {
-      navDispatch({
-        type: "set-is-show-edit-panel-mobile",
-        payload: false,
-      });
+      dispatch(setIsShowEditPanelMobile(false));
     } else {
-      navDispatch({
-        type: "set-is-show-edit-panel-web",
-        payload: true,
-      });
+      dispatch(setIsShowEditPanelWeb(true));
     }
   }
 
