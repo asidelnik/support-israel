@@ -4,15 +4,16 @@ import {
   useNavigation,
   useNavigationDispatch,
 } from "../../contexts/navigation-context";
-import { useOpinions } from "../../contexts/opinions-context";
 import { useMediaQuery } from "@mui/material";
 import EditButton from "../sub-components/EditButton";
 import DownloadButton from "../sub-components/DownloadButton";
 import { EditMenuParent } from "../../interfaces/enums";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 export default function EditCoverCard() {
   const design = useDesign();
-  const opinions = useOpinions();
+  const coverOpinion = useSelector((state: RootState) => state.opinions.coverOpinion);
   const nav = useNavigation();
   const navDispatch = useNavigationDispatch();
   const isMobile = useMediaQuery("(max-width: 650px)");
@@ -75,7 +76,7 @@ export default function EditCoverCard() {
                     }
               }
             >
-              {opinions.coverOpinion}
+              {coverOpinion}
             </div>
           </div>
         </div>

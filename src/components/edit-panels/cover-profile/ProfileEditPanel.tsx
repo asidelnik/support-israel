@@ -2,11 +2,6 @@ import c from "../../../styles/EditPanel.module.scss";
 import { Button, Switch, TextField, useMediaQuery } from "@mui/material";
 import clsx from "clsx";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
-
-import {
-  useOpinions,
-  useOpinionsDispatch,
-} from "../../../contexts/opinions-context";
 import FontSizeSlider from "../../sub-components/FontSizeSlider";
 import { EditMenuParent } from "../../../interfaces/enums";
 import {
@@ -17,10 +12,14 @@ import ProfileColorInput from "../../sub-components/ProfileColorInput";
 import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
 import { useDesign } from "../../../contexts/design-context";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProfileOpinion, uploadProfileImage } from '../../../redux/opinions-slice';
+import { RootState } from "../../../redux/store";
 
 export default function ProfileEditPanel() {
-  const opinionsDispatch = useOpinionsDispatch();
-  const opinion = useOpinions();
+  const dispatch = useDispatch();
+  const profileOpinion = useSelector((state: RootState) => state.opinions.profileOpinion);
+
   const navDispatch = useNavigationDispatch();
   const nav = useNavigation();
   const isMobile = useMediaQuery("(max-width: 650px)");
@@ -32,10 +31,8 @@ export default function ProfileEditPanel() {
     const reader = new FileReader();
 
     reader.onload = function (e: ProgressEvent<FileReader>) {
-      opinionsDispatch({
-        type: "upload-profile-image",
-        payload: e.target?.result as string,
-      });
+      const profileImageString = e.target?.result as string;
+      dispatch(uploadProfileImage(profileImageString));
     };
     reader.readAsDataURL(file as Blob);
 
@@ -46,10 +43,8 @@ export default function ProfileEditPanel() {
   function profileTextChangeHandler(
     event: React.ChangeEvent<HTMLInputElement>
   ) {
-    opinionsDispatch({
-      type: "update-profile-opinion",
-      payload: event.target?.value as string,
-    });
+    const profileOpinion = event.target?.value as string;
+    dispatch(updateProfileOpinion(profileOpinion));
 
     if (!nav.aFieldTouched)
       navDispatch({ type: "set-a-field-touched", payload: true });
@@ -108,7 +103,7 @@ export default function ProfileEditPanel() {
           <TextField
             id="text-field"
             maxRows={1}
-            value={opinion.profileOpinion}
+            value={profileOpinion}
             onChange={profileTextChangeHandler}
             inputProps={{ maxLength: 14 }}
             fullWidth

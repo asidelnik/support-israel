@@ -2,10 +2,6 @@ import c from "../../../styles/EditPanel.module.scss";
 import { Switch, TextField, useMediaQuery } from "@mui/material";
 import CoverColorInput from "../../sub-components/CoverColorInput";
 import FontSizeSlider from "../../sub-components/FontSizeSlider";
-import {
-  useOpinions,
-  useOpinionsDispatch,
-} from "../../../contexts/opinions-context";
 import FontFamilySelect from "../../sub-components/FontFamilySelect";
 import { EditMenuParent } from "../../../interfaces/enums";
 import {
@@ -16,10 +12,13 @@ import DownloadButton from "../../sub-components/DownloadButton";
 import HideDownButton from "../../sub-components/HideDownButton";
 import { useDesign } from "../../../contexts/design-context";
 import clsx from "clsx";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCoverOpinion } from "../../../redux/opinions-slice";
+import { RootState } from "../../../redux/store";
 
 export default function CoverEditPanel() {
-  const opinion = useOpinions();
-  const opinionsDispatch = useOpinionsDispatch();
+  const dispatch = useDispatch();
+  const coverOpinion = useSelector((state: RootState) => state.opinions.coverOpinion);
   const navDispatch = useNavigationDispatch();
   const nav = useNavigation();
   const design = useDesign();
@@ -27,10 +26,9 @@ export default function CoverEditPanel() {
   const advancedEdtiLabel = { inputProps: { "aria-label": "עריכה מתקדמת" } };
 
   function coverTextChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
-    opinionsDispatch({
-      type: "update-cover-opinion",
-      payload: event.target?.value as string,
-    });
+    const coverOpinion = event.target?.value as string;
+    dispatch(updateCoverOpinion(coverOpinion));
+
     if (!nav.aFieldTouched) {
       navDispatch({ type: "set-a-field-touched", payload: true });
     }
@@ -65,7 +63,7 @@ export default function CoverEditPanel() {
           <TextField
             id="text-field"
             maxRows={4}
-            value={opinion.coverOpinion}
+            value={coverOpinion}
             onChange={coverTextChangeHandler}
             inputProps={{ maxLength: 50 }}
             fullWidth

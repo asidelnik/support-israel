@@ -5,18 +5,17 @@ import {
   useNavigation,
   useNavigationDispatch,
 } from "../../contexts/navigation-context";
-import {
-  useOpinions,
-  useOpinionsDispatch,
-} from "../../contexts/opinions-context";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { EditMenuParent } from "../../interfaces/enums";
 import EditButton from "../sub-components/EditButton";
 import DownloadButton from "../sub-components/DownloadButton";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { uploadProfileImage } from "../../redux/opinions-slice";
 
 export default function EditProfileCard() {
-  const opinions = useOpinions();
-  const opinionsDispatch = useOpinionsDispatch();
+  const dispatch = useDispatch();
+  const { uploadedProfileImageUrl, profileOpinion } = useSelector((state: RootState) => state.opinions);
   const nav = useNavigation();
   const navDispatch = useNavigationDispatch();
   const design = useDesign();
@@ -29,10 +28,8 @@ export default function EditProfileCard() {
     const reader = new FileReader();
 
     reader.onload = function (e: ProgressEvent<FileReader>) {
-      opinionsDispatch({
-        type: "upload-profile-image",
-        payload: e.target?.result as string,
-      });
+      const profileOpinion = e.target?.result as string;
+      dispatch(uploadProfileImage(profileOpinion));
     };
     reader.readAsDataURL(file as Blob);
 
@@ -71,10 +68,10 @@ export default function EditProfileCard() {
           }
         >
           <div className={c.profilePictureDesignContainer}>
-            {opinions.uploadedProfileImageUrl ? (
+            {uploadedProfileImageUrl ? (
               <div className={c.uploadedImageContainer}>
                 <img
-                  src={opinions.uploadedProfileImageUrl}
+                  src={uploadedProfileImageUrl}
                   alt="Uploaded"
                   className={c.uploadedImage}
                 />
@@ -104,7 +101,7 @@ export default function EditProfileCard() {
               }}
               onClick={() => (isMobile ? setIsShowEditPanel() : null)}
             >
-              <div className={c.profileText + " " + design.cover.textDirection}>{opinions.profileOpinion}</div>
+              <div className={c.profileText + " " + design.cover.textDirection}>{profileOpinion}</div>
             </div>
           </div>
         </div>

@@ -1,15 +1,16 @@
 import c from "../../styles/ThemeCoverCard.module.scss";
 import { useDesign, useDesignDispatch } from "../../contexts/design-context";
-import { useOpinionsDispatch } from "../../contexts/opinions-context";
 import { router } from "../../router";
 import { CoverThemeType } from "../../interfaces/interfaces";
+import { useDispatch } from "react-redux";
+import { updateCoverOpinion, updateProfileOpinion } from "../../redux/opinions-slice";
 
 interface CoverCardProps {
   theme: CoverThemeType;
 }
 
 export default function ThemeCoverCard({ theme }: CoverCardProps) {
-  const opinionsDispatch = useOpinionsDispatch();
+  const dispatch = useDispatch();
   const design = useDesign();
   const designDispatch = useDesignDispatch();
   const {
@@ -29,14 +30,8 @@ export default function ThemeCoverCard({ theme }: CoverCardProps) {
   function selectTheme() {
     if (theme !== undefined) {
       // Update opinions
-      opinionsDispatch({
-        type: "update-cover-opinion",
-        payload: coverText,
-      });
-      opinionsDispatch({
-        type: "update-profile-opinion",
-        payload: profileText,
-      });
+      dispatch(updateCoverOpinion(coverText));
+      dispatch(updateProfileOpinion(profileText));
 
       // Update design
       designDispatch({
