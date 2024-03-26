@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import opinionsReducer from './opinions-slice';
+import navigationReducer from './navigation-slice';
 
 const store = configureStore({
   reducer: {
-    opinions: opinionsReducer
+    opinions: opinionsReducer,
+    navigation: navigationReducer,
   }
 })
 
