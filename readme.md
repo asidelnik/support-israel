@@ -1,6 +1,6 @@
 # Support Israel
 - A website to create Facebook images that support Israel.
-- Responsive, Material UI
+- React site, incredibly responsive, Material UI, Typescript & CSS Modules
 
 [Website link](https://asidelnik.github.io/support-israel)
 
